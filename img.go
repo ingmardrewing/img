@@ -46,7 +46,7 @@ func (i *Img) PrepareResizeTo(widths ...int) []string {
 	return i.destPaths
 }
 
-func (i *Img) Execute() {
+func (i *Img) Resize() {
 	for _, c := range i.commands {
 		err := exec.Command(c.name, c.arguments...).Run()
 		if err != nil {
