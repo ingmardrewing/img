@@ -77,7 +77,6 @@ func (i *ImgScaler) getPathFor(w int) string {
 func (i *ImgScaler) assembleFileNameFor(w int) string {
 	fileExtension := filepath.Ext(i.sourceFileName())
 	basename := strings.TrimSuffix(i.sourceFileName(), fileExtension)
-
 	return basename + i.getSizeTagForFilename(w) + fileExtension
 }
 
