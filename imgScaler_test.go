@@ -6,7 +6,7 @@ import (
 )
 
 func TestPrepareResizeReturnsCorrectPaths(t *testing.T) {
-	i := NewImg(
+	i := NewImgScaler(
 		"/Users/drewing/Desktop/dt_02042017/blog_local/atthezoo.png",
 		"/Users/drewing/Desktop")
 	actual := i.PrepareResizeTo(800, 390)
@@ -19,7 +19,7 @@ func TestPrepareResizeReturnsCorrectPaths(t *testing.T) {
 }
 
 func TestGetPathFor(t *testing.T) {
-	img := new(Img)
+	img := new(ImgScaler)
 
 	img.sourceFilePath = "/a/path/to/an/image.png"
 	img.destinationDirPath = "/another/path/"
@@ -31,10 +31,10 @@ func TestGetPathFor(t *testing.T) {
 }
 
 func TestGetSourceFileName(t *testing.T) {
-	img := new(Img)
+	img := new(ImgScaler)
 
 	img.sourceFilePath = "/a/path/to/an/image.png"
-	actual := img.getSourceFileName()
+	actual := img.sourceFileName()
 	expected := "image.png"
 	if actual != expected {
 		t.Fatal("Expected ", expected, " but got ", actual)
