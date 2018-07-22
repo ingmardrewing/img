@@ -34,6 +34,20 @@ func (i *imgContainer) readSourceImage(sourceImagePath string) {
 	i.src = src
 }
 
+func (i *imgContainer) resizeAndCropToAndSaveAs(path string, maxSideLength int) {
+	dest := imaging.Fill(
+		i.src,
+		maxSideLength,
+		maxSideLength,
+		imaging.Center,
+		imaging.Lanczos)
+
+	err := imaging.Save(dest, path)
+	if err != nil {
+		log.Fatalf("Failed to open image: %v", err)
+	}
+}
+
 func (i *imgContainer) resizeToAndSaveAs(path string, maxSideLength int) {
 	dest := imaging.Fit(
 		i.src,
