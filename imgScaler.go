@@ -36,6 +36,13 @@ func (i *ImgScaler) Resize() {
 	}
 }
 
+func (i *ImgScaler) ResizeAndCrop() {
+	ic := newImageContainer(i.sourceFilePath)
+	for _, ms := range i.maxSizes {
+		ic.resizeAndCropToAndSaveAs(i.getPathFor(ms), ms)
+	}
+}
+
 func (i *ImgScaler) getPaths() []string {
 	pths := []string{}
 	for _, ms := range i.maxSizes {
